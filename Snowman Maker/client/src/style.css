@@ -1,0 +1,52 @@
+@font-face{
+    font-family: Snowes;
+    src:url(fonts/winterpenguin.ttf);
+}
+*{
+    font-family: Tahoma;
+    color:#00cfdf;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+}
+#top {
+    text-align: center;
+    margin: 0 auto;
+}
+#content {
+    margin-top: 50px;
+    font-size: 2em;
+    text-align: center;
+}
+h4{
+    font-size: 40px;
+}
+h1{
+    font-family: Snowes;
+    font-size: 80px;
+}
+.hid{
+    display: none;
+}
+input[type=submit], #prevButton{
+    background-color: snow;
+    border: 1px #00cfdf;
+    padding: 5px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 8px;
+    font-size: 12px;
+}
+input[type=submit]:hover, #prevButton:hover {
+    background-color: lightgray;
+}
+canvas {
+    background: #00cfdf;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    display: block;
+}
