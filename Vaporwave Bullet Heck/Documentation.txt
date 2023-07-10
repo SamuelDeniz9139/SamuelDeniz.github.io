@@ -6,8 +6,7 @@
 
 - Made the game wider and adjusted texts to match.
 
-- The circles no longer disappear when they touch the ship.
-This is to prevent the game from getting easier as it goes along.
+- The circles no longer disappear when they touch the ship. This is to prevent the game from getting easier as it goes along.
 
 - Added background music to the title screen: https://www.youtube.com/watch?v=xYp0NHNnLR4
 
@@ -23,29 +22,23 @@ This is to prevent the game from getting easier as it goes along.
 
 - Only 2 kinds of bullets but they deal different damages.
 
-- Plans: mouse clicking will pause, overhauling visuals, adding a damage animation, score
-will now be a timer that goes up by the second, new sounds(?), timer that counts down at
-the start of the game to help players get ready, more types of bullets
+- Plans: mouse clicking will pause, overhauling visuals, adding a damage animation, score will now be a timer that goes up by the second, new sounds(?), timer that counts down at the start of the game to help players get ready, more types of bullets
 
 11-25-20:
 
-- Added a background to the game scene:
-(https://wallpapertag.com/wallpaper/full/e/3/5/113730-download-psychedelic-background-1920x1200.jpg)
+- Added a background to the game scene: (https://wallpapertag.com/wallpaper/full/e/3/5/113730-download-psychedelic-background-1920x1200.jpg)
 
 11-27-20:
 
-- Added a backdrop to the Game Over screen:
-(https://www.trickscity.com/wp-content/uploads/2017/01/psychedelic-wallpapershd.jpg)
+- Added a backdrop to the Game Over screen: (https://www.trickscity.com/wp-content/uploads/2017/01/psychedelic-wallpapershd.jpg)
 
-- Added a backdrop to the start screen:
-(https://wallpapertag.com/wallpaper/full/9/5/9/646833-beautiful-psychedelic-art-wallpapers-2560x1600-for-1080p.jpg)
+- Added a backdrop to the start screen: (https://wallpapertag.com/wallpaper/full/9/5/9/646833-beautiful-psychedelic-art-wallpapers-2560x1600-for-1080p.jpg)
 
 - Reworked the circles into images. For now they're just smaller spaceships but they will turn into energy balls later
 
 12-2-20:
 
-- Replaced the tiny spaceships with new energy ball sprites, made from https://www.pinterest.com/pin/563442603373141011/.
-They should be easier to see against the original backdrop.
+- Replaced the tiny spaceships with new energy ball sprites, made from https://www.pinterest.com/pin/563442603373141011/. They should be easier to see against the original backdrop.
 
 - Reduced the amount of balls that appear on the screen. This is to make way for more kinds of them.
 
@@ -57,15 +50,13 @@ They should be easier to see against the original backdrop.
 
 - Added the pause function. It activates when you click anywhere on the screen. The music also changes when you click.
 
-- Decided to change the game's theme to vaporwave. The music and backgrounds will be changed in kind. This is in
-response to criticism that said that the obstacles were hard to see against the backgrounds of the previous build.
+- Decided to change the game's theme to vaporwave. The music and backgrounds will be changed in kind. This is in response to criticism that said that the obstacles were hard to see against the backgrounds of the previous build.
 
 - Moved the spawn point for the head because it was too close to the orbs otherwise.
 
 - Added a new kind of orb.
 
-- New image for the player: photoshopped from https://cdn140.picsart.com/232979418102212.png?r240x240
-This idea came from my older sister.
+- New image for the player: photoshopped from https://cdn140.picsart.com/232979418102212.png?r240x240 This idea came from my older sister.
 
 - New backgrounds:
 
@@ -95,8 +86,7 @@ This idea came from my older sister.
 
 - Moved the life label.
 
-- Removed the start button and the restart button in favor of a new method of starting and restarting the game.
-This also rectifies an issue where the pause screen would load when the game was supposed to start.
+- Removed the start button and the restart button in favor of a new method of starting and restarting the game. This also rectifies an issue where the pause screen would load when the game was supposed to start.
 
 - Added new fonts for the program to use. This should help enhance the vaporwave aesthetic.
 
