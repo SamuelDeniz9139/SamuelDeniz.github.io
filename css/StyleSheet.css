@@ -1,0 +1,33 @@
+@font-face {
+    font-family: pageFont;
+    src: url("Dosis-Medium.ttf");
+}
+*{
+    font-family: pageFont;
+}
+#title{
+    font-size: 60px;
+    color: palegreen;
+}
+body{
+    height: 100%;
+    text-align: center;
+    background-image: linear-gradient(to bottom left,salmon, orange, salmon);
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.pageLink{
+    border: none;
+    padding: 20px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 5px 10px;
+    cursor: pointer;
+    font-size: 25px;
+}
+.pageLink:hover{
+    background-color:black;
+    color:white;
+    transition: 0.2s;
+}

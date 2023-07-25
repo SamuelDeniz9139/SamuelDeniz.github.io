@@ -3,18 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <title>Sam Deniz's Portfolio</title>
-        <link rel="stylesheet" href="StyleSheet.css">
+        <link rel="stylesheet" href="css/StyleSheet.css">
         <script>
             function viewWork(page){//sends you to any of my listed work
                 window.location.href=page;
             }
         </script>
     </head>
-    <body id="portfolio">
-        <h1>Samuel Deniz's Portfolio</h1>
-        <button class="pageLink" onclick="viewWork('Supporting the Spectrum/MainPage.html')">Supporting the Spectrum</button><br>
-        <button class="pageLink" onclick="viewWork('Vaporwave Bullet Heck/game.html')">Vaporwave Bullet Heck</button><br>
-        <button class="pageLink" onclick="window.location.href='https://undeadgamerguy.itch.io/agent-404'">Agent 404</button><br>
-        <button class="pageLink" onclick="window.location.href='https://undeadgamerguy.itch.io/crashway'">Crashway!</button>
+    <body>
+        <div>
+            <h1 id="title">Samuel Deniz's Portfolio</h1>
+            <button class="pageLink" onclick="viewWork('Supporting the Spectrum/MainPage.html')">Supporting the Spectrum</button><br>
+            <button class="pageLink" onclick="viewWork('Vaporwave Bullet Heck/game.html')">Vaporwave Bullet Heck</button><br>
+            <button class="pageLink" onclick="window.location.href='https://undeadgamerguy.itch.io/agent-404'">Agent 404</button><br>
+            <button class="pageLink" onclick="window.location.href='https://undeadgamerguy.itch.io/crashway'">Crashway!</button>
+        </div>
     </body>
 </html>
