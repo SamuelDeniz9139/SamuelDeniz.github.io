@@ -10,10 +10,7 @@ WebFont.load({
             "images/BGplay.jpg",
             "images/BGfail.jpg",
             "images/BGcredits.jpg",
-            "images/eball.png",
-            "images/enball.png",
-            "images/nball.png",
-            "images/nrgball.png"
+            "images/bubble.png"
         ]);
         app.loader.onComplete.add(setup);
         app.loader.load();

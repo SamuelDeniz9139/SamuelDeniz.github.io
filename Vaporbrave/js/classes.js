@@ -57,7 +57,7 @@ class Circle extends PIXI.Sprite
 {   //the basic green orbs
     constructor(radius, x=0, y=0)
     {
-        super(app.loader.resources["images/eball.png"].texture);
+        super(app.loader.resources["images/bubble.png"].texture);
         this.anchor.set(.5);
         this.scale.set(0.075);
 		this.x = x;
@@ -110,7 +110,7 @@ class Elcric extends PIXI.Sprite
 {   //the blue, horizontally oriented orbs
     constructor(radius, x=0, y=0)
     {
-        super(app.loader.resources["images/nball.png"].texture);
+        super(app.loader.resources["images/bubble.png"].texture);
         this.anchor.set(.5, .5); // position, scaling, rotating etc are now from center of sprite
         this.scale.set(0.075);
 		this.x = x;
@@ -164,7 +164,7 @@ class Sphere extends PIXI.Sprite
 {   //the large, white, instakill orb
     constructor(radius, x=0, y=0)
     {
-        super(app.loader.resources["images/nrgball.png"].texture);
+        super(app.loader.resources["images/bubble.png"].texture);
         this.anchor.set(.5, .5); // position, scaling, rotating etc are now from center of sprite
         this.scale.set(0.3);
 		this.x = x;
@@ -218,7 +218,7 @@ class Clecir extends PIXI.Sprite
 {   //the pink, vertically oriented orbs
     constructor(radius, x=0, y=0)
     {
-        super(app.loader.resources["images/enball.png"].texture);
+        super(app.loader.resources["images/bubble.png"].texture);
         this.anchor.set(.5, .5); // position, scaling, rotating etc are now from center of sprite
         this.scale.set(0.075);
 		this.x = x;

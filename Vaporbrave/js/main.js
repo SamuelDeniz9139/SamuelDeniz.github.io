@@ -8,15 +8,14 @@ document.body.appendChild(app.view);
 // constants
 const sceneWidth = app.view.width;
 const sceneHeight = app.view.height;
-let stage;
 let startScene;
 let gameScene;
 let head,scoreLabel,lifeLabel,hitSound,bgm,goy,pauseSound,titleSound;
 let titleBG,playBG,failBG,creditsBG;
 let gameOverScene;
 let pauseScene;
+let creditsScene;
 let circles = [];
-let aliens = [];
 let score = 0;
 let life = 100;
 let paused = true;
@@ -24,22 +23,20 @@ let totalSeconds = 0;
 window.onload = init;
 function setup()
 {	//sets up the whole game
-	stage = app.stage;
-	// Creates the start scene
 	startScene=new PIXI.Container();
-	stage.addChild(startScene);
-	// Creates the main game scene and makes it invisible
+	app.stage.addChild(startScene);
 	gameScene=new PIXI.Container();
 	gameScene.visible=false;
-	stage.addChild(gameScene);
-	// Create the Game Over scene and makes it invisible
+	app.stage.addChild(gameScene);
 	gameOverScene=new PIXI.Container();
 	gameOverScene.visible=false;
-	stage.addChild(gameOverScene);
-	// Creates the pause scene and makes it invisible
+	app.stage.addChild(gameOverScene);
 	pauseScene=new PIXI.Container();
 	pauseScene.visible=false;
-	stage.addChild(pauseScene);
+	app.stage.addChild(pauseScene);
+	let creditsScene=new PIXI.Container();
+	creditsScene.visible=false;
+	app.stage.addChild(creditsScene);
 	// Loads the backgrounds for the title, game, game over, and pause screens
 	titleBG=new TitleBG();
 	startScene.addChild(titleBG);
@@ -48,7 +45,7 @@ function setup()
 	failBG=new FailBG();
 	gameOverScene.addChild(failBG);
 	creditsBG=new CreditsBG();
-	pauseScene.addChild(creditsBG);
+	creditsScene.addChild(creditsBG);
 	// Creates labels for all 4 scenes
 	createLabels();
 	// Creates the head
@@ -156,13 +153,8 @@ function createLabels()
 	instructions.x = app.screen.width/2;
 	instructions.y = 300;
 	startScene.addChild(instructions);
-	let textStyle = new PIXI.TextStyle({
-		fill: 0xDDDDDD,
-		fontSize: 18,
-		fontFamily: 'Alien',
-	});
 	lifeLabel = new PIXI.Text();
-	lifeLabel.style = textStyle;
+	lifeLabel.style = sentStyle;
 	lifeLabel.x = 5;
 	lifeLabel.y = 5;
 	gameScene.addChild(lifeLabel);
@@ -186,34 +178,6 @@ function createLabels()
 	tryAgain.x = sceneWidth/2;
 	tryAgain.y = 350;
 	gameOverScene.addChild(tryAgain);
-}
-function pauseGame()
-{	//makes the pause screen display
-	if(paused)
-	{	// unpauses the game
-		if(pauseScene.visible==true)
-		{	//resumes the game if you paused it
-			pauseScene.visible=false;
-			gameScene.visible=true;
-			paused=false;
-			bgm.play();
-			pauseSound.pause();
-			pauseSound.currentTime=0;
-		}
-		else
-		{	//starts the game up if on the start screen or the game over screen
-			startGame();
-		}
-	}
-	else
-	{	// pauses the game
-		gameScene.visible=false;
-		pauseScene.visible=true;
-		paused=true;
-		bgm.pause();
-		bgm.currentTime=0;
-		pauseSound.play();
-	}
 }
 function startGame()
 {	// Starts the game up
@@ -280,6 +244,32 @@ function gameLoop()
 	{	// Is game over?
 		end();
 		return;
+	}
+}
+function pauseGame()
+{	//makes the pause screen display
+	if(paused)
+	{	// unpauses the game
+		if(pauseScene.visible==true)
+		{	//resumes the game if you paused it
+			pauseScene.visible=false;
+			paused=false;
+			bgm.play();
+			pauseSound.pause();
+			pauseSound.currentTime=0;
+		}
+		else
+		{	//starts the game up if on the start screen or the game over screen
+			startGame();
+		}
+	}
+	else
+	{	// pauses the game
+		pauseScene.visible=true;
+		paused=true;
+		bgm.pause();
+		bgm.currentTime=0;
+		pauseSound.play();
 	}
 }
 function end()
