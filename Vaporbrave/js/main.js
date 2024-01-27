@@ -1,7 +1,7 @@
 "use strict";
 const app = new PIXI.Application
 ({	//gives the application its parameters
-    width: 900,
+    width: 800,
     height: 600
 });
 document.body.appendChild(app.view);
@@ -11,11 +11,12 @@ const sceneHeight = app.view.height;
 let startScene;
 let gameScene;
 let head,scoreLabel,lifeLabel,hitSound,bgm,goy,pauseSound,titleSound;
-let titleBG,playBG,failBG,creditsBG;
+let titleBG,playBG,pauseBG,failBG,creditsBG;
 let gameOverScene;
 let pauseScene;
 let creditsScene;
-let circles = [];
+let bubbles = [];
+let dolphins = [];
 let score = 0;
 let life = 100;
 let paused = true;
@@ -37,17 +38,17 @@ function setup()
 	let creditsScene=new PIXI.Container();
 	creditsScene.visible=false;
 	app.stage.addChild(creditsScene);
-	// Loads the backgrounds for the title, game, game over, and pause screens
+// Loads the backgrounds for the title, game, game over, pause, and credits screens
 	titleBG=new TitleBG();
 	startScene.addChild(titleBG);
 	playBG=new PlayBG();
 	gameScene.addChild(playBG);
+	pauseBG=new PauseBG();
+	pauseScene.addChild(pauseBG);
 	failBG=new FailBG();
 	gameOverScene.addChild(failBG);
 	creditsBG=new CreditsBG();
 	creditsScene.addChild(creditsBG);
-	// Creates labels for all 4 scenes
-	createLabels();
 	// Creates the head
 	head = new Head();
 	gameScene.addChild(head);
@@ -75,6 +76,7 @@ function setup()
 		autoplay:false,
 		loop:true
 	});	// pause screen's theme
+	createLabels();
 	app.ticker.add(gameLoop);
 	titleSound.play();
 	// Now 'startScene' is visible. Clicking calls startGame()
@@ -83,47 +85,27 @@ function init()
 {	//allows the clicks to pause and unpause the game
 	document.querySelector("canvas").onclick = pauseGame;
 }
-function createCircles(numCircles)
-{	// standard bouncing circles
-	for(let i=0;i<numCircles/8;i++)
-	{	//creates the green orbs
-		let c = new Circle(5);
+function createObstacles(obst)
+{
+	for(let i=0;i<obst/8;i++)
+	{	//creates the bubbles
+		let c = new Bubble(5);
 		c.damage=5;
 		c.speed = Math.random() * 100 + 50;
 		c.x = Math.random() * (sceneWidth - 50) + 25;
 		c.y = Math.random() * (sceneHeight - 400) + 25;
-		circles.push(c);
+		bubbles.push(c);
 		gameScene.addChild(c);
-	}	// orthogonal circles
-	for(let i=0;i<numCircles/10; i++)
-	{	//creates the blue orbs
-		let c = new Elcric(5);
+	}
+	for(let i=0;i<obst/12; i++)
+	{	//creates the dolphins
+		let c = new Dolphin(5);
 		c.damage = 2;
 		c.speed = Math.random() * 100 + 50;
 		c.x = Math.random() * (sceneWidth - 50) + 25;
 		c.y = Math.random() * (sceneHeight - 400) + 25;
-		c.fwd = {x:4,y:1}
-		circles.push(c);
-		gameScene.addChild(c);
-	}
-	for(let i=0;i<numCircles/10; i++)
-	{	//creates the pink orbs
-		let c = new Clecir(5);
-		c.damage = 2;
-		c.speed = Math.random() * 100 + 50;
-		c.x = Math.random() * (sceneWidth - 50) + 25;
-		c.y = Math.random() * (sceneHeight - 400) + 25;
-		c.fwd = {x:1,y:4};
-		circles.push(c);
-		gameScene.addChild(c);
-	}
-	for(let i=0;i<1;i++)
-	{	//creates the white orb
-		let c=new Sphere(20);
-		c.damage=100;
-		c.x = Math.random() * (sceneWidth - 50) + 25;
-		c.y = Math.random() * (sceneHeight - 400) + 25;
-		circles.push(c);
+		c.fwd = {x:3,y:1}
+		dolphins.push(c);
 		gameScene.addChild(c);
 	}
 }
@@ -192,7 +174,7 @@ function startGame()
 	decreaseLifeBy(0);
 	head.x = mousePosition.x;
 	head.y = mousePosition.y;
-	createCircles(50);
+	createObstacles(50);
 	bgm.play();
 	paused = false;
 }
@@ -219,8 +201,8 @@ function gameLoop()
 	let h2 = head.height/2;
 	head.x = clamp(newX, 0+w2, sceneWidth-w2);
 	head.y = clamp(newY, 0+h2, sceneHeight-h2);
-	for (let c of circles)
-	{	// Moves the orbs
+	for (let c of bubbles)
+	{	// Moves the bubbles
 		c.move(dt);
 		if (c.x <= c.radius || c.x >= sceneWidth-c.radius)
 		{	//horizontal bouncing
@@ -231,7 +213,7 @@ function gameLoop()
 			c.fwd.y *= -1;
 		}
 	}	// Checks for collisions
-	for (let c of circles)
+	for (let c of bubbles)
 	{
 		if (c.isAlive && rectsIntersect(c,head))
 		{	//makes it sound like a constant burn
@@ -239,7 +221,41 @@ function gameLoop()
 			decreaseLifeBy(c.damage);
 		}
 	}
-	circles=circles.filter(c=>c.isAlive);
+	bubbles=bubbles.filter(c=>c.isAlive);
+	if (life <= 0)
+	{	// Is game over?
+		end();
+		return;
+	}
+	for (let c of dolphins)
+	{	// Moves the dolphins
+		c.move(dt);
+		if (c.x <= c.radius || c.x >= sceneWidth-c.radius)
+		{	//horizontal bouncing
+			c.fwd.x *= -1;
+		}
+		if (c.y <= c.radius || c.y >= sceneHeight-c.radius)
+		{	//vertical bouncing
+			c.fwd.y *= -1;
+		}
+	}	// Checks for collisions
+	for (let c of dolphins)
+	{
+		if (c.isAlive && rectsIntersect(c,head))
+		{	//makes it sound like a constant burn
+			hitSound.play();
+			decreaseLifeBy(c.damage);
+		}
+	}
+	for (let c of dolphins)
+	{
+		if (c.isAlive && rectsIntersect(c,head))
+		{	//makes it sound like a constant burn
+			hitSound.play();
+			decreaseLifeBy(c.damage);
+		}
+	}
+	dolphins=dolphins.filter(c=>c.isAlive);
 	if (life <= 0)
 	{	// Is game over?
 		end();
@@ -279,8 +295,10 @@ function end()
 	bgm.pause();
 	bgm.currentTime=0;
 	goy.play();
-	circles.forEach(c=>gameScene.removeChild(c)); // concise arrow function with no brackets and no return
-	circles = [];
+	bubbles.forEach(c=>gameScene.removeChild(c));
+	bubbles = [];
+	dolphins.forEach(c=>gameScene.removeChild(c));
+	dolphins = [];
 	gameOverScene.visible = true;
 	gameScene.visible = false;
 }

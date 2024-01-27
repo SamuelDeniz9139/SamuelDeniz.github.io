@@ -10,7 +10,9 @@ WebFont.load({
             "images/BGplay.jpg",
             "images/BGfail.jpg",
             "images/BGcredits.jpg",
-            "images/bubble.png"
+            "images/static.png",
+            "images/bubble.png",
+            "images/dolphin.png"
         ]);
         app.loader.onComplete.add(setup);
         app.loader.load();
