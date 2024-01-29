@@ -8,13 +8,15 @@ document.body.appendChild(app.view);
 // constants
 const sceneWidth = app.view.width;
 const sceneHeight = app.view.height;
-let startScene;
-let gameScene;
+let startScene=new PIXI.Container();
+let gameScene=new PIXI.Container();
+let gameOverScene=new PIXI.Container();
+let pauseScene=new PIXI.Container();
+let creditsScene=new PIXI.Container();
+let scenes=[startScene,gameScene,pauseScene,gameOverScene,creditsScene];
+let bgImages=["images/BGtitle.jpg","images/BGplay.jpg","images/static.png","images/BGfail.jpg","images/BGcredits.jpg"];
+let bgScales=[0.5,0.7,1,0.3,0.5];
 let head,scoreLabel,lifeLabel,hitSound,bgm,goy,pauseSound,titleSound;
-let titleBG,playBG,pauseBG,failBG,creditsBG;
-let gameOverScene;
-let pauseScene;
-let creditsScene;
 let bubbles = [];
 let dolphins = [];
 let score = 0;
@@ -24,31 +26,13 @@ let totalSeconds = 0;
 window.onload = init;
 function setup()
 {	//sets up the whole game
-	startScene=new PIXI.Container();
-	app.stage.addChild(startScene);
-	gameScene=new PIXI.Container();
-	gameScene.visible=false;
-	app.stage.addChild(gameScene);
-	gameOverScene=new PIXI.Container();
-	gameOverScene.visible=false;
-	app.stage.addChild(gameOverScene);
-	pauseScene=new PIXI.Container();
-	pauseScene.visible=false;
-	app.stage.addChild(pauseScene);
-	let creditsScene=new PIXI.Container();
-	creditsScene.visible=false;
-	app.stage.addChild(creditsScene);
-// Loads the backgrounds for the title, game, game over, pause, and credits screens
-	titleBG=new TitleBG();
-	startScene.addChild(titleBG);
-	playBG=new PlayBG();
-	gameScene.addChild(playBG);
-	pauseBG=new PauseBG();
-	pauseScene.addChild(pauseBG);
-	failBG=new FailBG();
-	gameOverScene.addChild(failBG);
-	creditsBG=new CreditsBG();
-	creditsScene.addChild(creditsBG);
+	for (let s=0;s<scenes.length;s++){//adds the scenes to the game
+		if (s>0){//sets all scenes as invisible except the title scene
+			scenes[s].visible=false;
+		};//the next two lines add the scenes themselves and then their backgrounds
+		app.stage.addChild(scenes[s]);
+		scenes[s].addChild(new BG(bgImages[s],bgScales[s]));
+	};
 	// Creates the head
 	head = new Head();
 	gameScene.addChild(head);
@@ -59,7 +43,7 @@ function setup()
 	goy = new Howl({
 		src: ['sounds/goy.mp3'],
 		autoplay:false,
-		loop:true		
+		loop:true
 	});// game over sound
 	bgm = new Howl({
 		src: ['sounds/bgm.mp3'],

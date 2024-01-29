@@ -1,0 +1,27 @@
+body{
+	cursor: url("images/statue.png") 3 3,crosshair;
+	background-color:black;
+}
+@font-face{
+	font-family: 'VCR';
+   	src: url('font/VCR_OSD_MONO_1.001.ttf');
+}
+@font-face{
+	font-family: 'Alien';
+   	src: url('font/SFAlienEncounters.ttf');
+}
+canvas{
+	margin-top:auto;
+	margin-bottom: auto;
+    margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+#useFont{
+	font-family: "VCR";
+	font-size: 1pt;
+}
+#fontUse{
+	font-family: "Alien";
+	font-size: 1pt;
+}

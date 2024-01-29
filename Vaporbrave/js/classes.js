@@ -9,56 +9,13 @@ class Head extends PIXI.Sprite
         this.y = y;
     }
 }
-class TitleBG extends PIXI.Sprite
-{   //the title screen background
-    constructor(x=0,y=0)
+class BG extends PIXI.Sprite
+{//controls all backgrounds
+    constructor(imageSource,imageScale,x=0,y=0)
     {
-        super(app.loader.resources["images/BGtitle.jpg"].texture);
+        super(app.loader.resources[imageSource].texture);
         this.anchor.set(0.5);
-        this.scale.set(0.5);
-        this.x = app.screen.width/2;
-        this.y = app.screen.height/2;
-    }
-}
-class PlayBG extends PIXI.Sprite
-{   //game screen
-    constructor(x=0,y=0)
-    {
-        super(app.loader.resources["images/BGplay.jpg"].texture);
-        this.anchor.set(0.5);
-        this.scale.set(0.7);
-        this.x = app.screen.width/2;
-        this.y = app.screen.height/2;
-    }
-}
-class FailBG extends PIXI.Sprite
-{   //game over screen
-    constructor(x=0,y=0)
-    {
-        super(app.loader.resources["images/BGfail.jpg"].texture);
-        this.anchor.set(0.5);
-        this.scale.set(0.3);
-        this.x = app.screen.width/2;
-        this.y = app.screen.height/2;
-    }
-}
-class PauseBG extends PIXI.Sprite
-{   //the pause screen background, will eventually become the background for the credits page
-    constructor(x=0,y=0)
-    {
-        super(app.loader.resources["images/static.png"].texture);
-        this.anchor.set(0.5);
-        this.x = app.screen.width/2;
-        this.y = app.screen.height/2;
-    }
-}
-class CreditsBG extends PIXI.Sprite
-{   //the pause screen background, will eventually become the background for the credits page
-    constructor(x=0,y=0)
-    {
-        super(app.loader.resources["images/BGcredits.jpg"].texture);
-        this.anchor.set(0.5);
-        this.scale.set(0.5);
+        this.scale.set(imageScale);
         this.x = app.screen.width/2;
         this.y = app.screen.height/2;
     }
