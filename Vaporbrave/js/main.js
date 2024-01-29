@@ -5,25 +5,51 @@ const app = new PIXI.Application
     height: 600
 });
 document.body.appendChild(app.view);
-// constants
 const sceneWidth = app.view.width;
 const sceneHeight = app.view.height;
 let startScene=new PIXI.Container();
 let gameScene=new PIXI.Container();
-let gameOverScene=new PIXI.Container();
 let pauseScene=new PIXI.Container();
+let gameOverScene=new PIXI.Container();
 let creditsScene=new PIXI.Container();
 let scenes=[startScene,gameScene,pauseScene,gameOverScene,creditsScene];
 let bgImages=["images/BGtitle.jpg","images/BGplay.jpg","images/static.png","images/BGfail.jpg","images/BGcredits.jpg"];
 let bgScales=[0.5,0.7,1,0.3,0.5];
-let head,scoreLabel,lifeLabel,hitSound,bgm,goy,pauseSound,titleSound;
+let head,scoreLabel,lifeLabel;
+let playBGM = new Howl({
+	src: ['sounds/bgm.mp3'],
+	autoplay:false,
+	loop:true
+});//gameplay music
+let pauseBGM= new Howl({
+	src: ['sounds/pause.mp3'],
+	autoplay:false,
+	loop:true
+});//paused music
+let failBGM = new Howl({
+	src: ['sounds/goy.mp3'],
+	autoplay:false,
+	loop:true
+});//game over music
+let titleBGM = new Howl({
+	src: ['sounds/title.mp3'],
+	autoplay:false,
+	loop:true
+});//title screen music
+let hitSound = new Howl({
+	src: ['sounds/fireball.mp3']
+});//the sound that plays when you get hit
 let bubbles = [];
 let dolphins = [];
 let score = 0;
-let life = 100;
+let life = 10;
 let paused = true;
 let totalSeconds = 0;
 window.onload = init;
+function init()
+{	//allows the clicks to pause and unpause the game
+	document.querySelector("canvas").onclick = pauseGame;
+}
 function setup()
 {	//sets up the whole game
 	for (let s=0;s<scenes.length;s++){//adds the scenes to the game
@@ -32,46 +58,16 @@ function setup()
 		};//the next two lines add the scenes themselves and then their backgrounds
 		app.stage.addChild(scenes[s]);
 		scenes[s].addChild(new BG(bgImages[s],bgScales[s]));
-	};
-	// Creates the head
+	};// Creates the head
 	head = new Head();
 	gameScene.addChild(head);
-	// Loads the sounds
-	hitSound = new Howl({
-		src: ['sounds/fireball.mp3']
-	});// burning sound. currently plays as you rapidly take damage
-	goy = new Howl({
-		src: ['sounds/goy.mp3'],
-		autoplay:false,
-		loop:true
-	});// game over sound
-	bgm = new Howl({
-		src: ['sounds/bgm.mp3'],
-		autoplay:false,
-		loop:true
-	});// background music
-	titleSound = new Howl({
-		src: ['sounds/title.mp3'],
-		autoplay:false,
-		loop:true
-	});// title screen tune
-	pauseSound = new Howl({
-		src: ['sounds/pause.mp3'],
-		autoplay:false,
-		loop:true
-	});	// pause screen's theme
 	createLabels();
 	app.ticker.add(gameLoop);
-	titleSound.play();
-	// Now 'startScene' is visible. Clicking calls startGame()
-}
-function init()
-{	//allows the clicks to pause and unpause the game
-	document.querySelector("canvas").onclick = pauseGame;
+	titleBGM.play();
 }
 function createObstacles(obst)
-{
-	for(let i=0;i<obst/8;i++)
+{//creates the obstacles
+	for(let i=0;i<obst;i++)
 	{	//creates the bubbles
 		let c = new Bubble(5);
 		c.damage=5;
@@ -81,7 +77,7 @@ function createObstacles(obst)
 		bubbles.push(c);
 		gameScene.addChild(c);
 	}
-	for(let i=0;i<obst/12; i++)
+	for(let i=0;i<obst; i++)
 	{	//creates the dolphins
 		let c = new Dolphin(5);
 		c.damage = 2;
@@ -93,6 +89,15 @@ function createObstacles(obst)
 		gameScene.addChild(c);
 	}
 }
+function generateStaticText(words,yPos,styleType,wordScene)
+{//generates text that does not change
+	let newText=new PIXI.Text(words);
+	newText.style=styleType;
+	newText.anchor.set(0.5);
+	newText.x=sceneWidth/2;
+	newText.y=yPos;
+	wordScene.addChild(newText);
+}
 function createLabels()
 {	// sets up startScene
 	let wordStyle = new PIXI.TextStyle({
@@ -101,65 +106,41 @@ function createLabels()
 		fontFamily: 'VCR',
 	});
 	let sentStyle= new PIXI.TextStyle({
-		fill: 0xDDDDDD,
-		stroke: 0x444444,
+		fill: 0xEEEEEE,
+		stroke: 0x222222,
 		strokeThickness: 2,
 		fontSize: 30,
 		fontFamily: 'Alien',
 	});
-	let title = new PIXI.Text("v a p o r b r a v e");
-	title.style = wordStyle;
-	title.anchor.set(0.5);
-	title.x = app.screen.width/2;
-	title.y = 60;
-	startScene.addChild(title);
-	let instructions = new PIXI.Text("Move the statue with your mouse.\n\nAvoid obstacles for as long as you can.\n\nClick on the screen to pause.");
-	instructions.style = sentStyle;
-	instructions.anchor.set(0.5);
-	instructions.x = app.screen.width/2;
-	instructions.y = 300;
-	startScene.addChild(instructions);
+	generateStaticText("v a p o r b r a v e",100,wordStyle,startScene);
+	generateStaticText("Move the statue with your mouse.",330,sentStyle,startScene);
+	generateStaticText("Avoid obstacles for as long as you can.",360,sentStyle,startScene);
+	generateStaticText("Click the screen to pause the game.",390,sentStyle,startScene);
 	lifeLabel = new PIXI.Text();
 	lifeLabel.style = sentStyle;
 	lifeLabel.x = 5;
 	lifeLabel.y = 5;
 	gameScene.addChild(lifeLabel);
 	decreaseLifeBy(0);
-	let paused = new PIXI.Text("p a u s e d");
-	paused.style = wordStyle;
-	paused.anchor.set(0.5);
-	paused.x = sceneWidth/2;
-	paused.y = sceneHeight/2;
-	pauseScene.addChild(paused);
-	// Sets up the Game Over Scene
-	let gameOver = new PIXI.Text("g a m e   o v e r");
-	gameOver.style = wordStyle;
-	gameOver.anchor.set(0.5);
-	gameOver.x = sceneWidth/2;
-	gameOver.y = 100;
-	gameOverScene.addChild(gameOver);
-	let tryAgain = new PIXI.Text("Click the game screen to try again.");
-	tryAgain.style = sentStyle;
-	tryAgain.anchor.set(0.5);
-	tryAgain.x = sceneWidth/2;
-	tryAgain.y = 350;
-	gameOverScene.addChild(tryAgain);
+	generateStaticText("p a u s e d",sceneHeight/2,wordStyle,pauseScene);
+	generateStaticText("g a m e  o v e r",200,wordStyle,gameOverScene);
+	generateStaticText("Click the game screen to try again.",350,sentStyle,gameOverScene);
 }
 function startGame()
 {	// Starts the game up
 	let mousePosition = app.renderer.plugins.interaction.mouse.global;
-	titleSound.pause();
-	goy.pause();
+	titleBGM.pause();
+	failBGM.pause();
 	startScene.visible = false;
 	gameOverScene.visible = false;
 	gameScene.visible = true;
 	pauseScene.visible = false;
-	life=100;
+	life=10;
 	decreaseLifeBy(0);
 	head.x = mousePosition.x;
 	head.y = mousePosition.y;
-	createObstacles(50);
-	bgm.play();
+	createObstacles(10);
+	playBGM.play();
 	paused = false;
 }
 function decreaseLifeBy(value)
@@ -253,10 +234,11 @@ function pauseGame()
 		if(pauseScene.visible==true)
 		{	//resumes the game if you paused it
 			pauseScene.visible=false;
+			lifeLabel.visible=true;
 			paused=false;
-			bgm.play();
-			pauseSound.pause();
-			pauseSound.currentTime=0;
+			playBGM.play();
+			pauseBGM.pause();
+			pauseBGM.currentTime=0;
 		}
 		else
 		{	//starts the game up if on the start screen or the game over screen
@@ -266,19 +248,20 @@ function pauseGame()
 	else
 	{	// pauses the game
 		pauseScene.visible=true;
+		lifeLabel.visible=false;
 		paused=true;
-		bgm.pause();
-		bgm.currentTime=0;
-		pauseSound.play();
+		playBGM.pause();
+		playBGM.currentTime=0;
+		pauseBGM.play();
 	}
 }
 function end()
 {	//kills the game
 	pauseScene.visible=false;
 	paused = true;
-	bgm.pause();
-	bgm.currentTime=0;
-	goy.play();
+	playBGM.pause();
+	playBGM.currentTime=0;
+	failBGM.play();
 	bubbles.forEach(c=>gameScene.removeChild(c));
 	bubbles = [];
 	dolphins.forEach(c=>gameScene.removeChild(c));
