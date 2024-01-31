@@ -1,4 +1,5 @@
 "use strict";
+import { Button } from "@pixi/ui";
 const app = new PIXI.Application
 ({	//gives the application its parameters
     width: 800,
@@ -39,6 +40,7 @@ let titleBGM = new Howl({
 let hitSound = new Howl({
 	src: ['sounds/fireball.mp3']
 });//the sound that plays when you get hit
+let startButton,creditsButton,titleButton,retryButton;
 let bubbles = [];
 let dolphins = [];
 let score = 0;
@@ -59,18 +61,37 @@ function setup()
 		app.stage.addChild(scenes[s]);
 		scenes[s].addChild(new BG(bgImages[s],bgScales[s]));
 	};// Creates the head
+	startButton=generateButton("images/startButton.png","images/startHover.png",sceneWidth*0.3,500);
+	startScene.addChild(startButton);
+	creditsButton=generateButton("images/creditsButton.png","images/creditsHover.png",sceneWidth*0.7,500);
+	startScene.addChild(creditsButton);
+	retryButton=generateButton("images/retryButton.png","images/retryHover.png",sceneWidth*0.3,500);
+	gameOverScene.addChild(retryButton);
+	titleButton=generateButton("images/titleButton.png","images/titleHover.png",sceneWidth*0.7,500);
+	gameOverScene.addChild(titleButton);
 	head = new Head();
 	gameScene.addChild(head);
 	createLabels();
 	app.ticker.add(gameLoop);
 	titleBGM.play();
 }
+function generateButton(buttonSprite,hoverSprite,buttonX,buttonY)
+{
+	let newButton=new PIXI.Sprite.from(app.loader.resources[buttonSprite].texture);
+	newButton.anchor.set(0.5);
+	newButton.scale.set(0.3);
+	newButton.x=buttonX;
+	newButton.y=buttonY;
+	newButton.interactive=true,
+	newButton.buttonMode=true;
+	return newButton;
+}
 function createObstacles(obst)
 {//creates the obstacles
 	for(let i=0;i<obst;i++)
 	{	//creates the bubbles
 		let c = new Bubble(5);
-		c.damage=5;
+		c.damage = 1;
 		c.speed = Math.random() * 100 + 50;
 		c.x = Math.random() * (sceneWidth - 50) + 25;
 		c.y = Math.random() * (sceneHeight - 400) + 25;
