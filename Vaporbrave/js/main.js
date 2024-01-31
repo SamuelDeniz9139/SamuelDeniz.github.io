@@ -15,14 +15,14 @@ let creditsScene=new PIXI.Container();
 let countdownScene=new PIXI.Container();
 let scenes=[startScene,gameScene,pauseScene,gameOverScene,creditsScene];
 let bgImages=["images/BGtitle.jpg","images/BGplay.jpg","images/static.png","images/BGfail.jpg","images/BGcredits.jpg"];
-let bgScales=[0.5,0.7,1,0.3,0.5];
+let bgScales=[0.5,0.7,1,0.6,0.6];
 let head,scoreLabel,lifeLabel;
 let playBGM = new Howl({
 	src: ['sounds/bgm.mp3'],
 	autoplay:false,
 	loop:true
 });//gameplay music
-let pauseBGM= new Howl({
+let pauseBGM = new Howl({
 	src: ['sounds/pause.mp3'],
 	autoplay:false,
 	loop:true
@@ -77,29 +77,39 @@ function setup()
 	app.ticker.add(gameLoop);
 	titleBGM.play();
 }
-function generateStaticText(words,yPos,size,font,wordScene)
+function generateStaticText(words,fill,size,font,thicc,yPos)
 {//generates text that does not change
 	let newText=new PIXI.Text(words);
 	newText.style=new PIXI.TextStyle({
-		fill: 0xDDDDDD,
+		fill: fill,
 		fontSize: size,
-		fontFamily: font
+		fontFamily: font,
+		strokeThickness: thicc,
+		stroke: 0xEEEEEE
 	});
 	newText.anchor.set(0.5);
 	newText.x=sceneWidth/2;
 	newText.y=yPos;
-	wordScene.addChild(newText);
+	return newText;
 }
 function createLabels()
 {	// sets up startScene
-	generateStaticText("v a p o r b r a v e",60,60,"VCR",startScene);
-	generateStaticText("Move the statue with your mouse.",300,30,"VCR",startScene);
-	generateStaticText("Avoid obstacles for as long as you can.",330,30,"VCR",startScene);
-	generateStaticText("Click the screen to pause the game.",360,30,"VCR",startScene);
-	generateStaticText("p a u s e d",sceneHeight/2,60,"VCR",pauseScene);
-	generateStaticText("g a m e  o v e r",200,60,"VCR",gameOverScene);
-	generateStaticText("c r e d i t s",80,60,"VCR",creditsScene);
-	generateStaticText("Made with PixiJS",150,30,"VCR",creditsScene);
+	startScene.addChild(generateStaticText("v a p o r b r a v e",[0x00FFFF,0xFF00FF],80,"Rocket",3,100));
+	startScene.addChild(generateStaticText("Move the statue with your mouse.",0xEEEEEE,30,"VCR",0,300));
+	startScene.addChild(generateStaticText("Avoid obstacles for as long as you can.",0xEEEEEE,30,"VCR",0,330));
+	startScene.addChild(generateStaticText("Click the screen to pause the game.",0xEEEEEE,30,"VCR",0,360));
+	pauseScene.addChild(generateStaticText("p a u s e d",0xEEEEEE,60,"VCR",0,sceneHeight/2));
+	gameOverScene.addChild(generateStaticText("GAME OVER",0xEEEEEE,80,"Alien",0,200));
+	creditsScene.addChild(generateStaticText("CREDITS",0xEEEEEE,80,"Alien",0,60));
+	creditsScene.addChild(generateStaticText("BACKGROUNDS:",0xEEEEEE,20,"VCR",0,120));
+	creditsScene.addChild(generateStaticText("https://hdqwalls.com/wallpaper/2560x1440/vaporwave",0xEEEEEE,20,"VCR",0,150));
+	creditsScene.addChild(generateStaticText("https://wallpaperaccess.com/vaporwave-desktop",0xEEEEEE,20,"VCR",0,180));
+	creditsScene.addChild(generateStaticText("MUSIC:",0xEEEEEE,20,"VCR",0,230));
+	creditsScene.addChild(generateStaticText("MACINTOSH PLUS - リサフランク420 / 現代のコンピュー",0xEEEEEE,20,"VCR",0,260));
+	creditsScene.addChild(generateStaticText("Kalax - Shibuya Lights (VAPORWAVE - AESTHETIC)",0xEEEEEE,20,"VCR",0,290));
+	creditsScene.addChild(generateStaticText("Lucien Hughes - S U N D A Y  S C H O O L",0xEEEEEE,20,"VCR",0,320));
+	creditsScene.addChild(generateStaticText("Glass Animals - The Other Side of Paradise V A P O R W A V E",0xEEEEEE,20,"VCR",0,350));
+	creditsScene.addChild(generateStaticText("Developed by Samuel Deniz using PixiJS",0xEEEEEE,20,"VCR",0,400));
 	lifeLabel = new PIXI.Text();
 	lifeLabel.style = new PIXI.TextStyle({
 		fill: 0xEEEEEE,
@@ -115,7 +125,7 @@ function generateButton(buttonSprite,hoverSprite,buttonX,buttonY,buttonFunction)
 {
 	let newButton=new PIXI.Sprite.from(app.loader.resources[buttonSprite].texture);
 	newButton.anchor.set(0.5);
-	newButton.scale.set(0.3);
+	newButton.scale.set(0.25);
 	newButton.x=buttonX;
 	newButton.y=buttonY;
 	newButton.interactive=true,
