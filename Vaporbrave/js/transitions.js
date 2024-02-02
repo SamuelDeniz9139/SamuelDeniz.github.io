@@ -59,8 +59,8 @@ function returnToTitle()
 	failBGM.pause();
 	titleBGM.currentTime=0;
 	titleBGM.play();
-	pauseBGM.currentTime=0;
-	pauseBGM.pause();
+	creditsBGM.currentTime=0;
+	creditsBGM.pause();
 }
 function viewCredits()
 {//sends the viewer to the credits scene
@@ -68,5 +68,5 @@ function viewCredits()
 	startScene.visible=false;
 	titleBGM.currentTime=0;
 	titleBGM.pause();
-	pauseBGM.play();
+	creditsBGM.play();
 }

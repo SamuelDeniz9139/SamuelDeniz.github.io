@@ -1,6 +1,6 @@
 class Head extends PIXI.Sprite
-{   //what you control
-    constructor(x = 0, y = 0)
+{//what you control
+    constructor(x=0, y=0)
     {
         super(app.loader.resources["images/statue.png"].texture);
         this.anchor.set(0.5); // position, scaling, rotating etc are now from center of sprite
@@ -20,8 +20,28 @@ class BG extends PIXI.Sprite
         this.y = app.screen.height/2;
     }
 }
+class Button extends PIXI.Sprite
+{//contains the structure for all buttons that appear in the game
+    constructor(buttonSprite,hoverSprite,buttonX,buttonY,buttonFunction,x=0,y=0)
+    {
+        super(app.loader.resources[buttonSprite].texture);
+        this.anchor.set(0.5);
+        this.scale.set(0.25);
+        this.x=buttonX;
+        this.y=buttonY;
+        this.interactive=true,
+        this.buttonMode=true;
+        this.on("pointerover",function(){
+            this.texture=app.loader.resources[hoverSprite].texture;
+        });
+        this.on("pointerout",function(){
+            this.texture=app.loader.resources[buttonSprite].texture;
+        });
+        this.on("pointerdown",buttonFunction);
+    }
+}
 class Bubble extends PIXI.Sprite
-{//bounce off the screen's sides
+{//obstacles that bounce off the screen's sides
     constructor(radius, x=0, y=0)
     {
         super(app.loader.resources["images/bubble.png"].texture);
