@@ -10,17 +10,17 @@ function setup()
 			scenes[s].visible=false;
 		};//the next two lines add the scenes themselves and then their backgrounds
 		app.stage.addChild(scenes[s]);
-		scenes[s].addChild(new BG(bgImages[s],bgScales[s]));
+		scenes[s].addChild(new BG(bgImages[s]));
 	};// Creates the head
-	startButton=new Button("images/startButton.png","images/startHover.png",sceneWidth*0.3,500,startGame);
+	startButton=new Button("images/startButton.png","images/startHover.png",sceneWidth*0.3,400,startGame);
 	startScene.addChild(startButton);
-	creditsButton=new Button("images/creditsButton.png","images/creditsHover.png",sceneWidth*0.7,500,viewCredits);
+	creditsButton=new Button("images/creditsButton.png","images/creditsHover.png",sceneWidth*0.7,400,viewCredits);
 	startScene.addChild(creditsButton);
 	retryButton=new Button("images/retryButton.png","images/retryHover.png",sceneWidth*0.3,400,startGame);
 	gameOverScene.addChild(retryButton);
 	titleButton=new Button("images/titleButton.png","images/titleHover.png",sceneWidth*0.7,400,returnToTitle);
 	gameOverScene.addChild(titleButton);
-	returnButton=new Button("images/titleButton.png","images/titleHover.png",sceneWidth/2,500,returnToTitle);
+	returnButton=new Button("images/titleButton.png","images/titleHover.png",sceneWidth/2,425,returnToTitle);
 	creditsScene.addChild(returnButton);
 	head = new Head();
 	gameScene.addChild(head);
@@ -45,16 +45,16 @@ function generateStaticText(words,fill,size,font,thicc,yPos)
 }
 function createLabels()
 {	//adds text to each scene of the game
-	startScene.addChild(generateStaticText("v a p o r b r a v e",[0x00FFFF,0xFF00FF],80,"Rocket",3,100));
-	startScene.addChild(generateStaticText("Move the statue with your mouse.",0xEEEEEE,30,"VCR",0,300));
-	startScene.addChild(generateStaticText("Avoid obstacles for as long as you can.",0xEEEEEE,30,"VCR",0,330));
-	startScene.addChild(generateStaticText("Click the screen to pause the game.",0xEEEEEE,30,"VCR",0,360));
+	startScene.addChild(generateStaticText("v a p o r b r a v e",[0x00FFFF,0xFF00FF],60,"Rocket",3,100));
+	startScene.addChild(generateStaticText("Move the statue with your mouse.",0xEEEEEE,25,"VCR",0,250));
+	startScene.addChild(generateStaticText("Avoid obstacles for as long as you can.",0xEEEEEE,25,"VCR",0,275));
+	startScene.addChild(generateStaticText("Click the screen to pause the game.",0xEEEEEE,25,"VCR",0,300));
 	pauseScene.addChild(generateStaticText("p a u s e d",0xEEEEEE,60,"VCR",0,sceneHeight/2));
 	gameOverScene.addChild(generateStaticText("GAME OVER",0xEEEEEE,80,"Alien",0,200));
-    creditsScene.addChild(generateStaticText("CREDITS",0xEEEEEE,80,"Alien",0,50));
+    creditsScene.addChild(generateStaticText("CREDITS",0xEEEEEE,60,"Alien",0,50));
     for (let creds=0;creds<creditsText.length;creds++)
     {   //adds all the text to the credits scene
-        creditsScene.addChild(generateStaticText(creditsText[creds],0xEEEEEE,20,"VCR",0,120+(30*creds)));
+        creditsScene.addChild(generateStaticText(creditsText[creds],0xEEEEEE,20,"VCR",0,100+(25*creds)));
     }
 	lifeLabel = new PIXI.Text();
 	lifeLabel.style = new PIXI.TextStyle({

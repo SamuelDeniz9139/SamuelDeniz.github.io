@@ -4,18 +4,18 @@ class Head extends PIXI.Sprite
     {
         super(app.loader.resources["images/statue.png"].texture);
         this.anchor.set(0.5); // position, scaling, rotating etc are now from center of sprite
-        this.scale.set(0.2);
+        this.scale.set(0.15);
         this.x = x;
         this.y = y;
     }
 }
 class BG extends PIXI.Sprite
 {//controls all backgrounds
-    constructor(imageSource,imageScale,x=0,y=0)
+    constructor(imageSource,x=0,y=0)
     {
         super(app.loader.resources[imageSource].texture);
         this.anchor.set(0.5);
-        this.scale.set(imageScale);
+        this.scale.set(3/4);
         this.x = app.screen.width/2;
         this.y = app.screen.height/2;
     }
@@ -26,7 +26,7 @@ class Button extends PIXI.Sprite
     {
         super(app.loader.resources[buttonSprite].texture);
         this.anchor.set(0.5);
-        this.scale.set(0.25);
+        this.scale.set(1/5);
         this.x=buttonX;
         this.y=buttonY;
         this.interactive=true,
@@ -99,7 +99,7 @@ class Dolphin extends PIXI.Sprite
     {
         super(app.loader.resources["images/dolphin.png"].texture);
         this.anchor.set(.5);
-        this.scale.set(0.3);
+        this.scale.set(0.2);
 		this.x = x;
 		this.y = y;
 		this.radius = radius;

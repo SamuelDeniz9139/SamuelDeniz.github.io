@@ -15,7 +15,7 @@ body{
    	src: url('font/Rocket\ Rinder.otf');
 }
 canvas{
-	margin-top:auto;
+	margin-top:50px;
 	margin-bottom: auto;
     margin-left: auto;
 	margin-right: auto;

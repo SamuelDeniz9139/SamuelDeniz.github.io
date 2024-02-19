@@ -1,9 +1,5 @@
 "use strict";
-const app = new PIXI.Application
-({	//gives the application its parameters
-    width: 800,
-    height: 600
-});
+const app = new PIXI.Application({width: 700, height: 500});
 document.body.appendChild(app.view);
 const sceneWidth = app.view.width;
 const sceneHeight = app.view.height;
@@ -17,9 +13,8 @@ let scenes=[startScene,gameScene,pauseScene,gameOverScene,creditsScene];
 let bgImages=["images/BGtitle.jpg","images/BGplay.jpg","images/static.png","images/BGfail.jpg","images/BGcredits.jpg"];
 let creditsText=["BACKGROUNDS:","https://hdqwalls.com/wallpaper/2560x1440/vaporwave", "https://wallpaperaccess.com/vaporwave-desktop",
 "MUSIC:","MACINTOSH PLUS - リサフランク420 / 現代のコンピュー", "Kalax - Shibuya Lights (VAPORWAVE - AESTHETIC)",
-"Lucien Hughes - S U N D A Y  S C H O O L","HOME - Resonance", "Glass Animals - The Other Side of Paradise V A P O R W A V E","",
+"Lucien Hughes - S U N D A Y  S C H O O L","HOME - Resonance", "Glass Animals - The Other Side of Paradise VAPORWAVE","",
 "Developed by Samuel Deniz using PixiJS"];
-let bgScales=[0.5,0.7,1,0.6,0.6];
 let head,lifeLabel;
 let playBGM = new Howl({
 	src: ['sounds/gameMusic.mp3'],
