@@ -4,18 +4,16 @@ class Head extends PIXI.Sprite
     {
         super(app.loader.resources["images/statue.png"].texture);
         this.anchor.set(0.5); // position, scaling, rotating etc are now from center of sprite
-        this.scale.set(0.15);
         this.x = x;
         this.y = y;
     }
 }
 class BG extends PIXI.Sprite
-{//controls all backgrounds
+{//controls all backgrounds, all should be 700x500, the same as the game window
     constructor(imageSource,x=0,y=0)
     {
         super(app.loader.resources[imageSource].texture);
         this.anchor.set(0.5);
-        this.scale.set(3/4);
         this.x = app.screen.width/2;
         this.y = app.screen.height/2;
     }
@@ -26,7 +24,6 @@ class Button extends PIXI.Sprite
     {
         super(app.loader.resources[buttonSprite].texture);
         this.anchor.set(0.5);
-        this.scale.set(1/5);
         this.x=buttonX;
         this.y=buttonY;
         this.interactive=true,
@@ -46,7 +43,6 @@ class Bubble extends PIXI.Sprite
     {
         super(app.loader.resources["images/bubble.png"].texture);
         this.anchor.set(0.5);
-        this.scale.set(0.1);
 		this.x = x;
 		this.y = y;
 		this.radius = radius;
@@ -99,7 +95,6 @@ class Dolphin extends PIXI.Sprite
     {
         super(app.loader.resources["images/dolphin.png"].texture);
         this.anchor.set(.5);
-        this.scale.set(0.2);
 		this.x = x;
 		this.y = y;
 		this.radius = radius;
