@@ -10,9 +10,20 @@
 	font-family: 'Rocket';
    	src: url('font/Rocket\ Rinder.otf');
 }
+#vcrFont{
+	font-family: "VCR";
+	font-size: 1pt;
+}
+#alienFont{
+	font-family: "Alien";
+	font-size: 1pt;
+}
+#titleFont{
+	font-family: "Rocket";
+	font-size: 1pt;
+}
 body{
-	cursor: 3 3,crosshair;
-	background-color:black;
+	background-color:violet;
 }
 canvas{
 	margin-top:50px;
@@ -20,12 +31,4 @@ canvas{
     margin-left: auto;
 	margin-right: auto;
 	display: block;
-}
-#useFont{
-	font-family: "VCR";
-	font-size: 1pt;
-}
-#fontUse{
-	font-family: "Alien";
-	font-size: 1pt;
 }

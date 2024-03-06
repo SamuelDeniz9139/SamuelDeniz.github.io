@@ -11,7 +11,7 @@ function startGame()
 	decreaseLifeBy(0);
 	head.x = mousePosition.x;
 	head.y = mousePosition.y;
-	createObstacles(10);
+	createObstacles(8);
 	playBGM.play();
 	paused = false;
 }

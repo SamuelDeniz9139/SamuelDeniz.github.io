@@ -3,19 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <title>Support for the Spectrum</title>
-        <link rel="stylesheet" href="src/StyleSheet.css">
-        <script src="src/SiteControl.js"></script>
+        <link rel="stylesheet" href="MainStyle.css">
+        <script>
+            function page(index){//changes the page
+                window.location.href=index;
+            }
+        </script>
     </head>
     <body id="mainArea" class="bg">
-        <header>
+        <header id="mainHead">
             <h1 id="secTitle">Support for the Spectrum</h1>
             <p>This site is a collection of free online resources for people with autism spectrum disorder or related problems.</p>
             <p>Take your time and look around until you find what's best for you.</p><br>
         </header>
         <div id="pageReds">
-            <button class="pageLink" id="bButton" onclick="page('BehaviorPage.html')">Behavioral Issues</button>
-            <button class="pageLink" id="cButton" onclick="page('CommunicationPage.html')">Communication Issues</button>
-            <button class="pageLink" id="sButton" onclick="page('SensoryPage.html')">Sensory Issues</button>
+            <button class="pageLink" id="bButton" onclick="page('bvr/BehaviorPage.html')">Behavioral Issues</button>
+            <button class="pageLink" id="cButton" onclick="page('cmn/CommunicationPage.html')">Communication Issues</button>
+            <button class="pageLink" id="sButton" onclick="page('sns/SensoryPage.html')">Sensory Issues</button>
         </div>
         <footer>
             <button class='otherLink' onclick="page('AboutPage.html')">About this site</button>

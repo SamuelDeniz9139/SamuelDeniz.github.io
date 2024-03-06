@@ -1,10 +1,10 @@
 @font-face {
     font-family: mainFont;
-    src: url("Fonts/GodshineSansSemibold.otf");
+    src: url("/src/Fonts/GodshineSansSemibold.otf");
 }
 @font-face {
     font-family: emphFont;
-    src: url("Fonts/StrawberryMuffins.ttf");
+    src: url("/src/Fonts/StrawberryMuffins.ttf");
 }
 * {
     text-align: center;
@@ -13,17 +13,8 @@
     opacity:1;
 }
 #secTitle{
-    font-size: 80px;
+    font-size: 70px;
     font-family: emphFont;
-}
-#pageReds{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#pageReds{
-    height: 250px;
-    color:white;
 }
 .demoArea{
     height: 500px;
@@ -35,8 +26,6 @@
     border-style: solid;
     border-color:dimgray;
     border-width: 2px;
-}
-.chatFace{
     width: 500px;
     height: 400px;
 }
@@ -44,11 +33,11 @@
     background-color:rgba(255,255,255,0.6);
     margin: auto;
     border-radius:50px;
-    width: 60%;
+    width: 80%;
     padding-top:10px;
     font-family: emphFont;
 }
-.pageLink, .behaInput, .commInput, .sensInput{
+.behaInput{
     border: none;
     border-radius: 40px;
     display: inline-block;
@@ -56,16 +45,10 @@
     cursor: pointer;
     font-family: emphFont;
     transition:0.5s;
-}
-.pageLink, .commInput {
-    width: 300px;
-    height: 100px;
-}
-.sensInput,.behaInput{
     width: 200px;
     height: 80px;
 }
-.behaInput:hover,.commInput:hover,.sensInput:hover{
+.behaInput:hover{
     background-color: dimgrey;
     color: white;
     transition: 0.5s;
@@ -83,30 +66,11 @@
     color: white;
     transition:0.3s;
 }
-.bg, .pageLink{
+.bg{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-}
-.hyde{
-    display: none;
-}
-#mainArea{
-    background-color:plum;
-    background-image: url("Images/MainPage.png");
-}
-#bButton:hover, #bvr{
     background-color:salmon;
-    background-image: url("Images/BehaviorIssue.png");
-}
-#cButton:hover, #cmn{
-    background-color:lightsteelblue;
-    background-image: url("Images/CommunicationIssue.png");
-}
-#sButton:hover, #sns{
-    background-color:yellowgreen;
-    background-image: url("Images/SensoryIssue.png");
-}
-#bvr, #cmn, #sns,#mainArea{
+    background-image: url("/src/Images/BehaviorIssue.png");
     background-attachment: fixed;
 }

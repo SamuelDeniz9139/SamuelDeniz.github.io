@@ -12,6 +12,8 @@ function setup()
 		app.stage.addChild(scenes[s]);
 		scenes[s].addChild(new BG(bgImages[s]));
 	};// Creates the head
+	app.ticker.add(gameLoop);
+	titleBGM.play();
 	startButton=new Button("images/startButton.png","images/startHover.png",sceneWidth*0.3,400,startGame);
 	startScene.addChild(startButton);
 	creditsButton=new Button("images/creditsButton.png","images/creditsHover.png",sceneWidth*0.7,400,viewCredits);
@@ -25,8 +27,6 @@ function setup()
 	head = new Head();
 	gameScene.addChild(head);
 	createLabels();
-	app.ticker.add(gameLoop);
-	titleBGM.play();
 }
 function generateStaticText(words,fill,size,font,thicc,yPos)
 {//generates text that does not change
@@ -69,25 +69,25 @@ function createLabels()
 }
 function createObstacles(obst)
 {//creates the obstacles
-	for(let i=0;i<obst;i++)
-	{	//creates the bubbles
-		let c = new Bubble(5);
-		c.damage = 1;
-		c.speed = Math.random() * 100 + 50;
-		c.x = Math.random() * (sceneWidth - 50) + 25;
-		c.y = Math.random() * (sceneHeight - 400) + 25;
-		bubbles.push(c);
-		gameScene.addChild(c);
-	}
-	for(let i=0;i<obst; i++)
+	for(let i=0;i<obst/2; i++)
 	{	//creates the dolphins
-		let c = new Dolphin(5);
+		let c = new Dolphin(15);
 		c.damage = 2;
 		c.speed = Math.random() * 100 + 50;
 		c.x = Math.random() * (sceneWidth - 50) + 25;
-		c.y = Math.random() * (sceneHeight - 400) + 25;
-		c.fwd = {x:3,y:1}
+		c.y = Math.random() * (sceneHeight - 200) + 25;
+		c.fwd = {x:3,y:0}
 		dolphins.push(c);
+		gameScene.addChild(c);
+	}
+	for(let i=0;i<obst;i++)
+	{	//creates the bubbles
+		let c = new Bubble(6);
+		c.damage = 1;
+		c.speed = Math.random() * 100 + 50;
+		c.x = Math.random() * (sceneWidth - 50) + 25;
+		c.y = Math.random() * (sceneHeight - 200) + 25;
+		bubbles.push(c);
 		gameScene.addChild(c);
 	}
 }

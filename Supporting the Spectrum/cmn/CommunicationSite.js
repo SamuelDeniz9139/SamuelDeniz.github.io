@@ -1,27 +1,11 @@
 function page(index){//changes the page
     window.location.href=index;
 }
-function action(){//when activated the character's action changes
-    var narrator=document.getElementById("narration");
-    const actions=["They're currently deeply involved in their special interest.",
-    "They're eating the same thing they always do.","They're figeting with their hands.",
-    "They're keenly focused on the details of something in the distance.",
-    "They were heavily alarmed by a sudden stimulus."];
-    const exp=["LookingAway","ChewingFace","StressFace","PuzzledFace","ShockFace","NeutralFace"];
-    let go=true;
-    narrator.innerHTML=actions[Math.floor(Math.random() * actions.length)];
-    for(let move=0;move<actions.length;move++){
-        if(narrator.innerHTML==actions[move]&&go){
-            go=false;
-            document.getElementById("indicator").src="src/Images/"+exp[move]+".png";
-        }
-    }
-}
+let quests=["How are you?","What are you doing?","I'm doing well, too.","You're not looking at me.",
+"Okay, then.","Why don't you want to tell me?","That was very rude of you.","It's expected of people.",
+"Please tone down your voice.","That's how it felt to me.","I'm not mad at you.","It's okay.",
+"Are you embarassed?","Sorry about that.","I'll leave you alone, then.","I won't judge you."];
 function talk(htmElement){//based on the user's input from the page
-    const quests=["How are you?","What are you doing?","I'm doing well, too.","You're not looking at me.",
-    "Okay, then.","Why don't you want to tell me?","That was very rude of you.","It's expected of people.",
-    "Please tone down your voice.","That's how it felt to me.","I'm not mad at you.","It's okay.",
-    "Are you embarassed?","Sorry about that.","I'll leave you alone, then.","I won't judge you."];
     var btn=document.getElementById(htmElement);
     let go=true;//this prevents the switch statement from accidentally triggering twice
     for(let phrs=0;phrs<quests.length;phrs++){
@@ -87,7 +71,7 @@ function respond(resVar,dlg){//creates new responses based on the face of the pr
     document.getElementById("dialogue").innerHTML=dlg;//gives the program's response
     const faces=["NeutralFace","LookingAway","PuzzledFace","EyeRoll","NervousFace","AngerFace","StressFace","ShockFace","HappyFace"];
     if(resVar<faces.length&&resVar>=0)//selects face from array
-        document.getElementById("indicator").src="src/Images/"+faces[resVar]+".png";
+        document.getElementById("indicator").src="/src/Images/"+faces[resVar]+".png";
     switch(resVar){
         case 0://NeutralFace
             document.getElementById("oneChoice").innerHTML="How are you?";
@@ -125,50 +109,5 @@ function respond(resVar,dlg){//creates new responses based on the face of the pr
             document.getElementById("oneChoice").style.display="none";
             document.getElementById("otherChoice").style.display="none";
             break;
-    }
-}
-let sensoryDisorder="hypersensitivity";
-function senDemo(type){//activates the demo for sensory processing disorder
-    const spd=["hypersensitivity","hyposensitivity"]
-    const intros=["I'm very sensitive to touch.","I don't respond to stimuli much."];
-    document.getElementById("begin").classList.add("hyde");
-    document.getElementById("touchDemo").classList.remove("hyde");
-    document.getElementById("touchButtons").classList.remove("hyde");
-    document.getElementById("dialogue").innerHTML="Hello! I have "+spd[type]+", so "+intros[type];
-    sensoryDisorder=spd[type];
-}
-function touch(touchVal){//part of the sensory demo, when activated it "touches" the character
-    var face=document.getElementById("indicator");
-    var dlg=document.getElementById("dialogue");
-    if(sensoryDisorder=="hypersensitivity"){//hypersensitive reactions
-        switch(touchVal){
-            case 0://when the user chooses not to "touch"
-                dlg.innerHTML="Thank you for not touching me. I didn't want to suffer sensory overload.";
-                face.src="src/Images/HappyFace.png";
-                break;
-            case 1://when the user chooses to "touch" lightly
-                dlg.innerHTML="Hey! Keep your hands to yourself! I need my personal space!";
-                face.src="src/Images/AngerFace.png";
-                break;
-            default:
-                dlg.innerHTML="Gah! Please don't scare me like that. Also, remember to let go.";
-                face.src="src/Images/ShockFace.png";
-                break;
-        }
-    } else if(sensoryDisorder=="hyposensitivity"){//hyposensitive reactions
-        switch(touchVal){
-            case 0://when the user chooses not to "touch"
-                dlg.innerHTML="I really want to feel something right now.";
-                face.src="src/Images/NeutralFace.png";
-                break;
-            case 1://when the user chooses to "touch" lightly
-                dlg.innerHTML="I see that you touched me, but I didn't really feel anything.";
-                face.src="src/Images/PuzzledFace.png";
-                break;
-            default://when the user chooses to "hug" the program
-                dlg.innerHTML="I quite like that. Thank you very much!";
-                face.src="src/Images/HappyFace.png";
-                break;
-        }
     }
 }
