@@ -12,6 +12,36 @@
     font-family: mainFont;
     opacity:1;
 }
+.pageReds{
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+.pageReds button{
+    border: none;
+    border-radius: 40px;
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    font-family: emphFont;
+    transition:0.5s;
+    float: none;
+    font-size: 24px;
+    width: 75%;
+    height: 100px;
+    background-color: rgba(255,255,255,0.6)
+}
+@media screen and (min-width:750px) {/*desktop exclusive*/
+    *{
+        font-size: 24px;
+    }
+    .pageReds{
+        display:flex;
+    }
+    .pageReds button{
+        width: 20%;
+    }
+}
 #secTitle{
     font-size: 70px;
     font-family: emphFont;
@@ -24,30 +54,11 @@
     padding-top:10px;
     font-family: emphFont;
 }
-#pageReds{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 250px;
-    color:white;
-}
-.pageLink{
-    border: none;
-    border-radius: 40px;
-    display: inline-block;
-    margin: 5px 10px;
-    cursor: pointer;
-    font-family: emphFont;
-    transition:0.5s;
-    width: 300px;
-    height: 100px;
-}
 .otherLink {
     background-color: transparent;
     border: none;
     display: inline-block;
     margin: 15px;
-    font-size: 20px;
     cursor: pointer;
     font-family: emphFont;
 }
@@ -55,7 +66,7 @@
     color: white;
     transition:0.3s;
 }
-.bg, .pageLink{
+.bg, .pageReds button{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
