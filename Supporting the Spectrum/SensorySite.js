@@ -18,30 +18,30 @@ function touch(touchVal){//part of the sensory demo, when activated it "touches"
         switch(touchVal){
             case 0://when the user chooses not to "touch"
                 dlg.innerHTML="Thank you for not touching me. I didn't want to suffer sensory overload.";
-                face.src="/src/Images/HappyFace.png";
+                face.src="src/Images/HappyFace.png";
                 break;
             case 1://when the user chooses to "touch" lightly
                 dlg.innerHTML="Hey! Keep your hands to yourself! I need my personal space!";
-                face.src="/src/Images/AngerFace.png";
+                face.src="src/Images/AngerFace.png";
                 break;
             default:
                 dlg.innerHTML="Gah! Please don't scare me like that. Also, remember to let go.";
-                face.src="/src/Images/ShockFace.png";
+                face.src="src/Images/ShockFace.png";
                 break;
         }
     } else if(sensoryDisorder=="hyposensitivity"){//hyposensitive reactions
         switch(touchVal){
             case 0://when the user chooses not to "touch"
                 dlg.innerHTML="I really want to feel something right now.";
-                face.src="/src/Images/NeutralFace.png";
+                face.src="src/Images/NeutralFace.png";
                 break;
             case 1://when the user chooses to "touch" lightly
                 dlg.innerHTML="I see that you touched me, but I didn't really feel anything.";
-                face.src="/src/Images/PuzzledFace.png";
+                face.src="src/Images/PuzzledFace.png";
                 break;
             default://when the user chooses to "hug" the program
                 dlg.innerHTML="I quite like that. Thank you very much!";
-                face.src="/src/Images/HappyFace.png";
+                face.src="src/Images/HappyFace.png";
                 break;
         }
     }

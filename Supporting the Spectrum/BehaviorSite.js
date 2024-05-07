@@ -13,7 +13,7 @@ function action(){//when activated the character's action changes
     for(let move=0;move<actions.length;move++){
         if(narrator.innerHTML==actions[move]&&go){
             go=false;
-            document.getElementById("indicator").src="/src/Images/"+exp[move]+".png";
+            document.getElementById("indicator").src="src/Images/"+exp[move]+".png";
         }
     }
 }

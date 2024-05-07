@@ -71,7 +71,7 @@ function respond(resVar,dlg){//creates new responses based on the face of the pr
     document.getElementById("dialogue").innerHTML=dlg;//gives the program's response
     const faces=["NeutralFace","LookingAway","PuzzledFace","EyeRoll","NervousFace","AngerFace","StressFace","ShockFace","HappyFace"];
     if(resVar<faces.length&&resVar>=0)//selects face from array
-        document.getElementById("indicator").src="/src/Images/"+faces[resVar]+".png";
+        document.getElementById("indicator").src="src/Images/"+faces[resVar]+".png";
     switch(resVar){
         case 0://NeutralFace
             document.getElementById("oneChoice").innerHTML="How are you?";

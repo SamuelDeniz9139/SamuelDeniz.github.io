@@ -1,10 +1,10 @@
 @font-face {
     font-family: mainFont;
-    src: url("/src/Fonts/GodshineSansSemibold.otf");
+    src: url("src/Fonts/GodshineSansSemibold.otf");
 }
 @font-face {
     font-family: emphFont;
-    src: url("/src/Fonts/StrawberryMuffins.ttf");
+    src: url("src/Fonts/StrawberryMuffins.ttf");
 }
 * {
     text-align: center;
@@ -37,7 +37,7 @@
     padding-top:10px;
     font-family: emphFont;
 }
-.commInput{
+.behaInput{
     border: none;
     border-radius: 40px;
     display: inline-block;
@@ -45,10 +45,10 @@
     cursor: pointer;
     font-family: emphFont;
     transition:0.5s;
-    width: 300px;
-    height: 100px;
+    width: 200px;
+    height: 80px;
 }
-.commInput:hover{
+.behaInput:hover{
     background-color: dimgrey;
     color: white;
     transition: 0.5s;
@@ -66,14 +66,11 @@
     color: white;
     transition:0.3s;
 }
-.hyde{
-    display: none;
-}
 .bg{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-color:lightsteelblue;
-    background-image: url("/src/Images/CommunicationIssue.png");
+    background-color:salmon;
+    background-image: url("src/Images/BehaviorIssue.png");
     background-attachment: fixed;
 }
