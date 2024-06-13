@@ -1,10 +1,10 @@
 @font-face {
     font-family: mainFont;
-    src: url("src/Fonts/GodshineSansSemibold.otf");
+    src: url("/src/Fonts/GodshineSansSemibold.otf");
 }
 @font-face {
     font-family: emphFont;
-    src: url("src/Fonts/StrawberryMuffins.ttf");
+    src: url("/src/Fonts/StrawberryMuffins.ttf");
 }
 * {
     text-align: center;
@@ -33,11 +33,11 @@
     background-color:rgba(255,255,255,0.6);
     margin: auto;
     border-radius:50px;
-    width: 60%;
+    width: 80%;
     padding-top:10px;
     font-family: emphFont;
 }
-.behaInput, .commInput, .sensInput{
+.behaInput{
     border: none;
     border-radius: 40px;
     display: inline-block;
@@ -48,7 +48,7 @@
     width: 200px;
     height: 80px;
 }
-.sensInput:hover{
+.behaInput:hover{
     background-color: dimgrey;
     color: white;
     transition: 0.5s;
@@ -70,10 +70,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-color:yellowgreen;
-    background-image: url("src/Images/SensoryIssue.png");
+    background-color:salmon;
+    background-image: url("/src/Images/BehaviorIssue.png");
     background-attachment: fixed;
-}
-.hyde{
-    display: none;
 }

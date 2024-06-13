@@ -1,10 +1,10 @@
 @font-face {
     font-family: mainFont;
-    src: url("src/Fonts/GodshineSansSemibold.otf");
+    src: url("/src/Fonts/GodshineSansSemibold.otf");
 }
 @font-face {
     font-family: emphFont;
-    src: url("src/Fonts/StrawberryMuffins.ttf");
+    src: url("/src/Fonts/StrawberryMuffins.ttf");
 }
 * {
     text-align: center;
@@ -31,7 +31,7 @@
     height: 100px;
     background-color: rgba(255,255,255,0.6)
 }
-@media screen and (min-width:750px) {/*desktop exclusive*/
+@media only screen and (min-width:750px) {
     *{
         font-size: 24px;
     }
@@ -50,8 +50,8 @@
     background-color:rgba(255,255,255,0.6);
     margin: auto;
     border-radius:50px;
-    width: 60%;
-    padding-top:10px;
+    width: 80%;
+    padding:5px;
     font-family: emphFont;
 }
 .otherLink {
@@ -73,19 +73,19 @@
 }
 #mainArea{
     background-color:plum;
-    background-image: url("src/Images/MainPage.png");
+    background-image: url("/src/Images/MainPage.png");
 }
 #bButton:hover{
     background-color:salmon;
-    background-image: url("src/Images/BehaviorIssue.png");
+    background-image: url("/src/Images/BehaviorIssue.png");
 }
 #cButton:hover{
     background-color:lightsteelblue;
-    background-image: url("src/Images/CommunicationIssue.png");
+    background-image: url("/src/Images/CommunicationIssue.png");
 }
 #sButton:hover{
     background-color:yellowgreen;
-    background-image: url("src/Images/SensoryIssue.png");
+    background-image: url("/src/Images/SensoryIssue.png");
 }
 #mainArea{
     background-attachment: fixed;
