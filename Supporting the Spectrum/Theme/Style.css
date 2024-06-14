@@ -1,11 +1,11 @@
 /*Fonts*/
 @font-face {
     font-family: mainFont;
-    src: url("/src/Fonts/GodshineSansSemibold.otf");
+    src: url("./src/Fonts/GodshineSansSemibold.otf");
 }
 @font-face {
     font-family: emphFont;
-    src: url("/src/Fonts/StrawberryMuffins.ttf");
+    src: url("./src/Fonts/StrawberryMuffins.ttf");
 }
 * {
     text-align: center;
@@ -76,19 +76,19 @@ h1{
 }
 .beha, #bButton:hover{
     background-color:salmon;
-    background-image: url("/src/Images/BehaviorIssue.png");
+    background-image: url("./src/Images/BehaviorIssue.png");
 }
 .comm, #cButton:hover{
     background-color:lightsteelblue;
-    background-image: url("/src/Images/CommunicationIssue.png");
+    background-image: url("./src/Images/CommunicationIssue.png");
 }
 .sens, #sButton:hover{
     background-color:yellowgreen;
-    background-image: url("/src/Images/SensoryIssue.png");
+    background-image: url("./src/Images/SensoryIssue.png");
 }
 #mainArea{
     background-color:plum;
-    background-image: url("/src/Images/MainPage.png");
+    background-image: url("./src/Images/MainPage.png");
 }
 /*Main + About Pages*/
 .pageReds{
