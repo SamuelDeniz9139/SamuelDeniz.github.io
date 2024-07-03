@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Supporting the Spectrum</title>
+        <link rel="stylesheet" href="Style.css">
+        <script>
+            function page(index){//changes the page
+                window.location.href=index;
+            }
+        </script>
+    </head>
+    <body id="mainArea" class="bg">
+        <header id="mainHead">
+            <h1>Supporting the Spectrum</h1>
+            <p>Welcome to Supporting the Spectrum!</p>
+            <p>Interact with the demos to learn about autism-related disorders.</p><br>
+        </header>
+        <div class="pageReds">
+            <button class="homeButton" id="bButton" onclick="page('Behavior.html')">Behavior Demo</button>
+            <button class="homeButton" id="cButton" onclick="page('Communication.html')">Communication Demo</button>
+            <button class="homeButton" id="sButton" onclick="page('Sensory.html')">Sensory Demo</button>
+        </div><br>
+        <footer>
+            <button class='otherLink' onclick="page('AboutPage.html')">About this site</button>
+        </footer>
+    </body>
+</html>

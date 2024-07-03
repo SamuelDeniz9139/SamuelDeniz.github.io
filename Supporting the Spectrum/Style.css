@@ -38,7 +38,7 @@ h1{
     cursor: pointer;
     font-family: emphFont;
     transition:0.5s;
-    width: 300px;
+    width: 250px;
     height: 100px;
 }
 .textButton:hover{
@@ -63,15 +63,10 @@ h1{
     display: none;
 }
 /*Backgrounds*/
-.bg, .pageReds button{
+.bg, .homeButton{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-}
-.pageReds button{
-    width:30%;
-}
-.bg, .homeButton{
     background-attachment: fixed;
 }
 .beha, #bButton:hover{
