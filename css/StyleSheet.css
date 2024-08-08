@@ -8,13 +8,13 @@
 #title{
   font-size: 60px;
 }
+.subtitle{
+  font-size:30px;
+}
 body {
   height: 100%;
   text-align:center;
-  background-size: 300% 300%;
   background-color: cornflowerblue;
-  -webkit-animation: AnimateBG 8s ease infinite;
-    animation: AnimateBG 8s ease infinite;
 }
 .pageLink{
   border: none;
