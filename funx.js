@@ -8,16 +8,9 @@ let deets=[["Redesigned the organization's Squarespace website to make it more p
         ["Set to renovate the organization's website to be more professional and consistent.",
         "Set to implement additional pages onto the website, including a dedicated page for staff bios.",
         "Set to bolster the organization's fundraiser efforts through both its website and social media."]];
-function viewWork(){//sends you to any of my listed work
-    window.location.href=pageLink;
+function viewWork(site){//sends you to any of my listed work
+    window.location.href=site;
 }
-function changePage(job){//changes the page for each job
-    document.getElementById("duties").innerHTML="";
-    pageLink=urls[job];
-    document.getElementById("name").innerHTML=clients[job];
-    for(let ps=0; ps<deets[job].length; ps++){
-        document.getElementById("duties").innerHTML+=deets[job][ps]+"<br><br>";
-    }
-    document.getElementById("media").classList.remove("hidden");
-    document.getElementById("progress").innerHTML=progs[job];
+function changePage(sp){
+    window.location.href+=sp;
 }
