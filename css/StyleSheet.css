@@ -5,31 +5,44 @@
 *{
   font-family: pageFont;
   color:white;
+  font-size:20px;
 }
-#title{
+.title{
   font-size: 60px;
+}
+.subtitle{
+  font-size:30px;
 }
 body {
   height: 100%;
+  text-align: center;
+}
+.desc{
+  width:70%;
+  font-size:18px;
   text-align:center;
+  margin:auto;
+}
+#mainPage{
   background-color: cornflowerblue;
+}
+#xroadPage{
+  background-color:#843645;
+}
+#agapePage{
+  background-color:#6E992A;
 }
 .pageLink{
   border: none;
   padding: 20px;
   border-radius: 20px;
-  width: 250px;
   display: inline-block;
-  margin: 10px;
+  margin: 5px;
   cursor: pointer;
-  font-size: 20px;
   color:black;
 }
 .pageLink:hover{
   background-color:black;
   color:white;
-  transition: 0.5s;
-}
-.hidden{
-  display:none;
+  transition: 0.25s;
 }
