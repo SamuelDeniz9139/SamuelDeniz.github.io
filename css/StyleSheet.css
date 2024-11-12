@@ -18,19 +18,19 @@ body {
   text-align: center;
 }
 .desc{
-  width:70%;
+  width:75%;
   font-size:18px;
   text-align:center;
   margin:auto;
 }
 #mainPage{
-  background-color: cornflowerblue;
+  background-color:cornflowerblue;
 }
 #xroadPage{
   background-color:#843645;
 }
 #agapePage{
-  background-color:#6E992A;
+  background-color:#85530E;
 }
 .pageLink{
   border: none;
