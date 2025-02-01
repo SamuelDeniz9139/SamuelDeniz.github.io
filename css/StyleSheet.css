@@ -62,7 +62,7 @@ button:hover{
   .title{
     font-size:40px;
   }
-  .pageLink{
+  button{
     width:90%;
   }
 }
