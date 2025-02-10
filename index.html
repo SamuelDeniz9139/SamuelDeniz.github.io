@@ -4,28 +4,18 @@
     <head>
         <meta charset="UTF-8">
         <title>Sam Deniz's Portfolio</title>
-        <link rel="stylesheet" href="css/StyleSheet.css">
-        <script src="funx.js"></script>
+        <link rel="stylesheet" href="funx/Styles.css">
+        <script src="funx/Scripts.js"></script>
     </head>
-    <body id="mainPage">
+    <body>
+        <div id="name">
+            <h1 class="title">Samuel Deniz</h1>
+            <p>A web designer worth your trust</p>
+        </div>
         <div>
-            <div id="intro">
-                <h1 class="title">Welcome to my portfolio!</h1>
-                <p class="bio">I'm Samuel Deniz, a web designer and developer based in Fairport, New York. In 2023, I graduated
-                from Rochester Institute of Technology with a Bachelor's of Science in New Media Interactive Development, which
-                encompasses website design/development, mobile development, alternate interfaces, and more. While I was there,
-                I found myself most at ease developing websites, with a particular fondness for HTML, CSS, and JavaScript.<br><br>
-                I believe that any organization with an Internet presence, including businesses and non-profits, should have a
-                visually appealing and easily accessible website. Many people find out about companies thanks to the Internet,
-                and a poorly-designed website can cost you a potential interaction. With my knowledge of website design and
-                development, I can make sure your website never causes you miss out.</p>
-            </div>
-            <div id="pastWork">
-                <h1 class="subtitle">My past and present clients include:</h1>
-                <button onclick="changePage('Xroads.html')">Crossroads of Caring</button>
-                <button onclick="changePage('Agape.html')">Agape Haven of Abundance</button>
-                <button onclick="changePage('JayC.html')">Jay C Auto Repair</button>
-            </div>
+            <button onclick="changePage('about.html')">About Me</button>
+            <button onclick="changePage('pastwork.html')">Past Projects</button>
+            <button onclick="changePage('contact.html')">Contact Me</button>
         </div>
     </body>
 </html>

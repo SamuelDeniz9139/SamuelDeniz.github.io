@@ -1,0 +1,71 @@
+@font-face {
+  font-family: standardFont;
+  src: url("Better\ VCR\ 9.0.1.ttf");
+}
+*{/*font used for regular text*/
+  font-family: standardFont;
+  font-size: 14px;
+  color:whitesmoke;
+}
+.title {
+  font-size: 60px;
+}
+.company{
+  font-size: 25px;
+}
+body {/*the page itself*/
+  margin: 0;
+  padding:20px 30px;
+  text-align: center;
+  background-color: #000000;
+}
+.subBody{/*the contents of subpages*/
+  width: 90%;
+  margin: auto;
+}
+.job, .contacts{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0px;
+}
+.job img{/*applies to images in the job divs, all of them should be 16 by 9*/
+  width: 50%;
+  border-radius: 20px;
+}
+.workDesc, .workDesc button{
+  width: 50%;
+}
+.conTact{
+  width: 30%;
+}
+button{
+  border: 2px;
+  padding: 20px 10px;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
+  background-color: #924eff;
+  width: 25%;
+  transition: 0.5s;
+}
+button:hover{
+  background-color: #6200ff;
+}
+@media only screen and (max-width:600px){
+  .subBody{
+    width: 100%;
+    margin: auto;
+  }
+  button, .job button{
+    width: 75%;
+  }
+  .job{
+    width: 100%;
+    flex-direction: column;
+  }
+  .workDesc, .job img{
+    width: 100%;
+  }
+}
