@@ -10,14 +10,18 @@
 .title {
   font-size: 60px;
 }
-.company{
-  font-size: 25px;
+.subtitle {
+  font-size: 20px;
 }
 body {/*the page itself*/
   margin: 0;
   padding:20px 30px;
   text-align: center;
-  background-color: #000000;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
 .subBody{/*the contents of subpages*/
   width: 90%;
@@ -44,10 +48,10 @@ button{
   padding: 20px 10px;
   border-radius: 20px;
   display: inline-block;
-  margin: 10px;
+  margin: 15px;
   cursor: pointer;
   background-color: #924eff;
-  width: 25%;
+  width: 20%;
   transition: 0.5s;
 }
 button:hover{
@@ -61,11 +65,11 @@ button:hover{
   button, .job button{
     width: 75%;
   }
-  .job{
+  .job, .contacts{
     width: 100%;
     flex-direction: column;
   }
-  .workDesc, .job img{
+  .workDesc, .job img, .conTact{
     width: 100%;
   }
 }
