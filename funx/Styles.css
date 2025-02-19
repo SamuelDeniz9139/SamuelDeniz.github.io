@@ -2,13 +2,44 @@
   font-family: standardFont;
   src: url("Better\ VCR\ 9.0.1.ttf");
 }
+@font-face {
+  font-family: nameFont;
+  src: url("AlteHaasGroteskBold.ttf");
+}
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes glitchy{
+  0%{text-shadow:0.02em -0.04em 0 #f022ffaa, -0.02em 0.02em 0 #00ffffaa;}
+  20%{text-shadow:0.01em 0.04em 0 #f022ffaa, -0.01em 0 0 #00ffffaa;}
+  21%{text-shadow:0.04em -0.01em 0 #f022ffaa, -0.03em 0.01em 0 #00ffffaa;}
+  38%{text-shadow:-0.04em 0.03em 0 #f022ffaa, 0.02em -0.04em 0 #00ffffaa;}
+  39%{text-shadow:-0.02em 0.01em 0 #f022ffaa, 0.04em -0.02em 0 #00ffffaa;}
+  63%{text-shadow:0.03em 0.02em 0 #f022ffaa, 0 -0.03em 0 #00ffffaa;}
+  64%{text-shadow:0 -0.04em 0 #f022ffaa, 0.03em 0.01em 0 #00ffffaa;}
+  81%{text-shadow:0.03em -0.01em 0 #f022ffaa, 0 0.03 0 #00ffffaa;}
+  82%{text-shadow:0.02em 0 0 #f022ffaa, -0.01em 0.03em 0 #00ffffaa;}
+  99%{text-shadow:0.04em -0.02em 0 #f022ffaa, -0.04em 0.02em 0 #00ffffaa;}
+  100%{text-shadow: 0 -0.03em 0 #f022ffaa, -0.04em 0.01em 0 #00ffffaa;}
+}
 *{/*font used for regular text*/
   font-family: standardFont;
   font-size: 14px;
   color:whitesmoke;
 }
 .title {
-  font-size: 60px;
+  font-size: 80px;
+}
+.glitch{
+  font-family: nameFont;
+  position: relative;
+  text-shadow:0.02em -0.02em 0 #f022ffaa, -0.02em 0.02em 0 #00ffffaa;
+  animation: glitchy 2000ms infinite;
 }
 .subtitle {
   font-size: 20px;
@@ -49,6 +80,7 @@ button:hover{
   border: solid blue;
   border-width: 30px 4px 4px 4px;
   margin: 10px;
+  animation: popIn 0.4s;
   *{
     color:black;
   }
