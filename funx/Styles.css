@@ -29,11 +29,17 @@
 }
 *{/*font used for regular text*/
   font-family: standardFont;
-  font-size: 14px;
+  font-size: 0.95em;
   color:whitesmoke;
 }
+.name{
+  font-size: 6em;
+}
 .title {
-  font-size: 80px;
+  font-size: 3em;
+}
+.subtitle {
+  font-size: 1.5em;
 }
 .glitch{
   font-family: nameFont;
@@ -41,12 +47,9 @@
   text-shadow:0.02em -0.02em 0 #f022ffaa, -0.02em 0.02em 0 #00ffffaa;
   animation: glitchy 2000ms infinite;
 }
-.subtitle {
-  font-size: 20px;
-}
 body {/*the page itself*/
   margin: 0;
-  padding:20px 30px;
+  padding: 25px;
   text-align: center;
   background-color: black;
   background-repeat: no-repeat;
@@ -57,13 +60,17 @@ body {/*the page itself*/
 .subBody{/*the contents of subpages*/
   width: 90%;
   margin: auto;
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 button{
   border: 2px;
-  padding: 20px 10px;
+  padding: 1.5em;
   border-radius: 20px;
   display: inline-block;
-  margin: 15px;
+  margin: 1em;
   cursor: pointer;
   background-color: cyan;
   color:black;
@@ -74,54 +81,58 @@ button{
 button:hover{
   background-color: #00ccff;
 }
+.titleArea{
+  min-height:15vh;
+}
 .popUp{/*used for styling each div like a Windows XP pop-up, and to make them easier to read*/
   background-color: beige;
   border-radius: 5px;
   border: solid blue;
   border-width: 30px 4px 4px 4px;
-  margin: 10px;
-  animation: popIn 0.4s;
+  margin: 1em;
+  animation: popIn 0.8s;
   *{
     color:black;
   }
   button{
     border: solid gray;
     border-width: 1px;
-    padding: 10px 5px;
+    padding: 1em;
     border-radius: 1px;
     background-color: beige;
-    min-width: 30%;
+    min-width: 40%;
   }
-  button:hover{
+  button:hover, button:active{
     background-color: rgba(0,0,0,0.1);
   }
 }
 .noImage{/*adds padding to pop-ups that don't have an image*/
-  padding:20px 10px;
+  padding:10px 20px;
 }
 .flexBox{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 0px;
 }
 .half{
   width: 45%;
-  margin:20px;
-  img{/*should be 16 x 9*/
+  margin: 1em 3em;
+  img{
     width:100%;
   }
 }
 .third{
   width: 30%;
-  button{
-    min-width: 40%;
-  }
 }
-@media only screen and (max-width:600px){
+@media only screen and (max-width:1000px){
+  .name{
+    font-size: 4em;
+  }
+  .subtitle{
+    font-size: 1.25em;
+  }
   .subBody{
     width: 100%;
-    margin: auto;
   }
   button{
     min-width:75%;
@@ -130,7 +141,8 @@ button:hover{
     min-width: 40%;
   }
   .flexBox{
-    width: 100%;
+    width: 90%;
+    margin: auto;
     flex-direction: column;
   }
   .half, .third{

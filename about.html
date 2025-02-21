@@ -3,31 +3,35 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Sam Deniz's Portfolio</title>
+        <title>About Me</title>
         <link rel="stylesheet" href="funx/Styles.css">
         <script src="funx/Scripts.js"></script>
     </head>
     <body style="background-image: url('/images/AboutBG.png'), linear-gradient(#8c1eff, #f222ff, orange)">
-        <div class="subBody">
+        <div class="titleArea">
             <h1 class="title">About Me</h1>
-            <div class="noImage popUp">
-                <p>I am a web designer and developer based in Fairport, New York. In 2023, I graduated from Rochester Institute of Technology
-                    with a Bachelor's of Science in New Media Interactive Development, which encompasses website design/development, mobile
-                    development, alternate interfaces, and more. While I was there, I found myself most at ease developing websites, with a
-                    particular fondness for HTML, CSS, and JavaScript.<br><br>
-                    I believe that any organization with an Internet presence, including businesses and non-profits, should have a visually
-                    appealing and easily accessible website. Many people find out about companies thanks to the Internet, and a poorly-designed
-                    website can cost you a potential interaction. With my knowledge of website design and development, I can make sure your
-                    website never causes you to miss out.</p>
-            </div>
-            <div class="noImage popUp">
-                <h1 class="subtitle">What I Can Do</h1><br>
-                <p><b>Skills: </b>Front-end design, responsive design, UX/UI, graphic design, documentation,
-                testing, communication</p>
-                <p><b>Programming Languages: </b>HTML, CSS, JavaScript</p>
-                <p><b>Tools and Platforms: </b>Microsoft VS Code, Github, Canva, Adobe Photoshop, Shopify, Squarespace</p>
-            </div>
-            <button onclick="changePage('/')">Return to Main Page</button>
         </div>
+        <div class="subBody">
+            <div class="flexBox">
+                <div class="noImage popUp half">
+                    <p>I am a web designer and developer based in Fairport, New York. In 2023, I graduated from Rochester Institute of Technology
+                        with a Bachelor's of Science in New Media Interactive Development, which encompasses website design/development, mobile
+                        development, alternate interfaces, and more. While I was there, I found myself most at ease developing websites, with a
+                        particular fondness for HTML, CSS, and JavaScript.<br><br>
+                        I believe that any organization with an Internet presence, including businesses and non-profits, should have a visually
+                        appealing and easily accessible website. Many people find out about companies thanks to the Internet, and a poorly-designed
+                        website can cost you a potential interaction. With my knowledge of website design and development, I can make sure your
+                        website never causes you to miss out.</p>
+                </div>
+                <div class="noImage popUp half">
+                    <h1 class="subtitle">What I Can Do</h1><br>
+                    <p><b>Skills: </b>Front-end design, responsive design, UX/UI, graphic design, documentation,
+                    testing, communication</p>
+                    <p><b>Programming Languages: </b>HTML, CSS, JavaScript</p>
+                    <p><b>Tools and Platforms: </b>Microsoft VS Code, Github, Canva, Adobe Photoshop, Shopify, Squarespace</p>
+                </div>
+            </div>
+        </div>
+        <button onclick="changePage('/')">Return to Main Page</button>
     </body>
 </html>
